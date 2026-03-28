@@ -18,12 +18,6 @@ async def manejar_mensaje(update: Update, context: ContextTypes.DEFAULT_TYPE):
     nombre = update.effective_user.first_name
     print(f"📩 Mensaje recibido de {nombre} (ID: {user_id})")
 
-    if user_id in usuarios_atendidos:
-        print(f"⚠️ Usuario {nombre} ya fue atendido, saltando...")
-        return
-
-    usuarios_atendidos.add(user_id)
-
     try:
         print(f"⚡ Mandando video a {nombre}...")
         await update.message.reply_video(
